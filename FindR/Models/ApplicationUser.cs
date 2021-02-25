@@ -6,7 +6,23 @@ using System.Threading.Tasks;
 
 namespace FindR.Models
 {
+    public enum GenderType
+    {
+        Male,
+        Female,
+        Others
+    }
     public class ApplicationUser : IdentityUser
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime BirthDate { get; set; }
+        public int Age { get; set; }
+        public GenderType Gender { get; set; }
+        //public PersonalAdress Adress { get; set; }
+        public string Details { get; set; }
+
+        //Lista prieteni
+        //Lista Anunturi
     }
 }
