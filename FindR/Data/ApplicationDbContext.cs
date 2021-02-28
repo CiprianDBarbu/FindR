@@ -17,5 +17,12 @@ namespace FindR.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+        
+
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Advertisement> Advertisements { get; set; }
+        public DbSet<CompleteAddress> CompleteAddresses { get; set; }
+        public DbSet<Housing> Housings { get; set; }
+        public DbSet<PersonalAddress> PersonalAddresses { get; set; }
     }
 }

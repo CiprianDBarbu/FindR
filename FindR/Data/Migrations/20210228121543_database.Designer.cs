@@ -4,14 +4,16 @@ using FindR.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FindR.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210228121543_database")]
+    partial class database
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,63 +21,12 @@ namespace FindR.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FindR.Models.Address", b =>
-                {
-                    b.Property<int>("Address_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("AddressId")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Zone")
-                        .HasColumnType("int");
-
-                    b.HasKey("Address_Id");
-
-                    b.ToTable("Addresses");
-                });
-
-            modelBuilder.Entity("FindR.Models.Advertisement", b =>
-                {
-                    b.Property<int>("Advertisement_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("AdvertisementId")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CheckInDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("Housing_Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProfileId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Advertisement_Id");
-
-                    b.HasIndex("Housing_Id");
-
-                    b.HasIndex("ProfileId");
-
-                    b.ToTable("Advertisements");
-                });
-
             modelBuilder.Entity("FindR.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("AdressPersonalAddress_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("Age")
@@ -142,8 +93,6 @@ namespace FindR.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdressPersonalAddress_Id");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -155,36 +104,6 @@ namespace FindR.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("FindR.Models.CompleteAddress", b =>
-                {
-                    b.Property<int>("CompleteAddress_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("CompleteAddressId")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("Address_Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Floor")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Latitude")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Longitude")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Street")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CompleteAddress_Id");
-
-                    b.HasIndex("Address_Id");
-
-                    b.ToTable("CompleteAddresses");
-                });
-
             modelBuilder.Entity("FindR.Models.Housing", b =>
                 {
                     b.Property<int>("Housing_Id")
@@ -192,9 +111,6 @@ namespace FindR.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("HousingId")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("FullAddressCompleteAddress_Id")
-                        .HasColumnType("int");
 
                     b.Property<int>("NoOfRooms")
                         .HasColumnType("int");
@@ -204,27 +120,7 @@ namespace FindR.Data.Migrations
 
                     b.HasKey("Housing_Id");
 
-                    b.HasIndex("FullAddressCompleteAddress_Id");
-
                     b.ToTable("Housings");
-                });
-
-            modelBuilder.Entity("FindR.Models.PersonalAddress", b =>
-                {
-                    b.Property<int>("PersonalAddress_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("PersonalAddressId")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("Address_Id")
-                        .HasColumnType("int");
-
-                    b.HasKey("PersonalAddress_Id");
-
-                    b.HasIndex("Address_Id");
-
-                    b.ToTable("PersonalAddresses");
                 });
 
             modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.DeviceFlowCodes", b =>
@@ -465,57 +361,6 @@ namespace FindR.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("FindR.Models.Advertisement", b =>
-                {
-                    b.HasOne("FindR.Models.Housing", "Housing")
-                        .WithMany()
-                        .HasForeignKey("Housing_Id");
-
-                    b.HasOne("FindR.Models.ApplicationUser", "Profile")
-                        .WithMany()
-                        .HasForeignKey("ProfileId");
-
-                    b.Navigation("Housing");
-
-                    b.Navigation("Profile");
-                });
-
-            modelBuilder.Entity("FindR.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("FindR.Models.PersonalAddress", "Adress")
-                        .WithMany("ApplicationUsers")
-                        .HasForeignKey("AdressPersonalAddress_Id");
-
-                    b.Navigation("Adress");
-                });
-
-            modelBuilder.Entity("FindR.Models.CompleteAddress", b =>
-                {
-                    b.HasOne("FindR.Models.Address", "Address")
-                        .WithMany("CompleteAddresses")
-                        .HasForeignKey("Address_Id");
-
-                    b.Navigation("Address");
-                });
-
-            modelBuilder.Entity("FindR.Models.Housing", b =>
-                {
-                    b.HasOne("FindR.Models.CompleteAddress", "FullAddress")
-                        .WithMany()
-                        .HasForeignKey("FullAddressCompleteAddress_Id");
-
-                    b.Navigation("FullAddress");
-                });
-
-            modelBuilder.Entity("FindR.Models.PersonalAddress", b =>
-                {
-                    b.HasOne("FindR.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("Address_Id");
-
-                    b.Navigation("Address");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -565,16 +410,6 @@ namespace FindR.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("FindR.Models.Address", b =>
-                {
-                    b.Navigation("CompleteAddresses");
-                });
-
-            modelBuilder.Entity("FindR.Models.PersonalAddress", b =>
-                {
-                    b.Navigation("ApplicationUsers");
                 });
 #pragma warning restore 612, 618
         }

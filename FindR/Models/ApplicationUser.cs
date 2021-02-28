@@ -19,7 +19,9 @@ namespace FindR.Models
         public DateTime BirthDate { get; set; }
         public int Age { get; set; }
         public GenderType Gender { get; set; }
-        //public PersonalAdress Adress { get; set; }
+        
+        //one - to - one
+        public virtual PersonalAddress Adress { get; set; }
         public string Details { get; set; }
 
         //Lista prieteni
