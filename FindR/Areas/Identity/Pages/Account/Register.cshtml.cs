@@ -79,11 +79,14 @@ namespace FindR.Areas.Identity.Pages.Account
 
             [Display(Name = "Age")]
             public int Age { get; set; }
+
             public GenderType Gender { get; set; }
             //public PersonalAdress{get;set;}
 
             [StringLength(1000, ErrorMessage = "The Details about you must be a maximum pf {1} characters long.")]
             public string Details { get; set; }
+
+            public byte[] ProfilePicture { get; set; }
             //Lista prieteni
             //Lista anunturi
         }
@@ -107,7 +110,7 @@ namespace FindR.Areas.Identity.Pages.Account
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
                     BirthDate = Input.BirthDate,
-                    Age = Input.Age,
+                    Age = DateTime.Today.Month < Input.BirthDate.Month ?  DateTime.Today.Year - Input.BirthDate.Year - 1: DateTime.Today.Year - Input.BirthDate.Year,
                     Gender = Input.Gender,
                     Details = Input.Details
                 };

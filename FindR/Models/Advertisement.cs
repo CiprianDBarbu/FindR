@@ -10,7 +10,9 @@ namespace FindR.Models
         [Key, Column("AdvertisementId")]
         public int Advertisement_Id{get;set;}
 
-        //one - to - one
+        //one - to - many
+        public string ProfileId { get; set; }
+        [ForeignKey("ProfileId")]
         public virtual ApplicationUser Profile { get; set; }    //person who posted the ad
 
         //one - to - one

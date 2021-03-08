@@ -23,5 +23,8 @@ namespace FindR.Models
 
         //one - to - one
         public virtual CompleteAddress FullAddress { get; set; }
+
+
+        public bool IsTaken { get; set; }   //Check if that housing is already listed(or free for usage)
     }
 }
