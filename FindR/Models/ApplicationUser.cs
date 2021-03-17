@@ -20,12 +20,19 @@ namespace FindR.Models
         public DateTime BirthDate { get; set; }
         public int Age { get; set; }
         public GenderType Gender { get; set; }
-        
-        //one - to - one
-        public virtual PersonalAddress Adress { get; set; }
         public string Details { get; set; }
 
-        //Friends list is implemented as Firend table
+
+        //many - to - one
+        public int AddressId { get; set; }
+        public Address Adress { get; set; }
+        
+
+
+        //Friends list is implemented as Friend table
+        
+        
+        //many - to - one
         public virtual ICollection<Advertisement> Advertisements { get; set; } //An user could have more placed Ads
 
         public int AttendsTo { get; set; }  //If an user does not have posted Ads, he can attend to only one other housing.

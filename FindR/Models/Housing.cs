@@ -9,7 +9,7 @@ namespace FindR.Models
 {
     public class Housing
     {
-        [Key,Column("HousingId")]
+        [Key, Column("HousingId")]
         public int Housing_Id { get; set; }
 
         //public List<string> Images { get; set; }    //Images will be stored online, each of it has a link that will be stored
@@ -22,7 +22,7 @@ namespace FindR.Models
         //public int FullAddressId { get; set; }
 
         //one - to - one
-        public virtual CompleteAddress FullAddress { get; set; }
+        public CompleteAddress FullAddress { get; set; }
 
 
         public bool IsTaken { get; set; }   //Check if that housing is already listed(or free for usage)

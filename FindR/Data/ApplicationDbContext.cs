@@ -23,11 +23,27 @@ namespace FindR.Data
         public DbSet<Advertisement> Advertisements { get; set; }
         public DbSet<CompleteAddress> CompleteAddresses { get; set; }
         public DbSet<Housing> Housings { get; set; }
-        public DbSet<PersonalAddress> PersonalAddresses { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+
+            builder.Entity<Housing>()
+                .HasOne(a => a.FullAddress)
+                .WithOne(b => b.Housing)
+                .HasForeignKey<CompleteAddress>(h => h.HousingId);
+
+
+            builder.Entity<CompleteAddress>()
+                .HasOne(a => a.Address)
+                .WithMany(b => b.CompleteAddresses);
+
+            builder.Entity<ApplicationUser>()
+                .HasOne(a => a.Adress)
+                .WithMany(b => b.ApplicationUsers);
+
+            #region Address seed
             builder.Entity<Address>()
                 .HasData(
                     new Address { Address_Id = 1, Country = "Romania", City = "Alba-Iulia", Zone = ZoneType.Urban},
@@ -118,8 +134,86 @@ namespace FindR.Data
                     new Address { Address_Id = 86, Country = "Romania", City = "Bucuresti, Sector6", Zone = ZoneType.Urban },
                     new Address { Address_Id = 87, Country = "Romania", City = "Bucuresti", Zone = ZoneType.Rural }
                     );
-            
+#endregion
+
+            #region CompleteAddress seed
+            builder.Entity<CompleteAddress>()
+                .HasData(
+                new CompleteAddress { CompleteAddress_Id = 1, AddressId = 1, HousingId = 1, Street = "Strada Gladiolelor 8", Floor = "2", Latitude = "46.066828", Longitude = "23.554441" },
+                new CompleteAddress { CompleteAddress_Id = 2, AddressId = 2, HousingId = 2, Street = "Strada Octaviang Goga 34", Floor = "Parter", Latitude = "46.175409", Longitude = "21.310149" },
+                new CompleteAddress { CompleteAddress_Id = 3, AddressId = 15, HousingId = 3, Street = "Strada Zorilor 13", Floor = "1", Latitude = "45.640371", Longitude = "25.624299" },
+                new CompleteAddress { CompleteAddress_Id = 4, AddressId = 15, HousingId = 4, Street = "Strada Vulcan 49", Floor = "Parter,1", Latitude = "45.661322", Longitude = "25.599990" },
+                new CompleteAddress { CompleteAddress_Id = 5, AddressId = 15, HousingId = 5, Street = "Strada Sitei 84", Floor = "Parter", Latitude = "45.655480", Longitude = "25.594241" },
+                new CompleteAddress { CompleteAddress_Id = 6, AddressId = 23, HousingId = 6, Street = "Strada Ion Mester 3", Floor = "4", Latitude = "46.756804", Longitude = "23.559443" },
+                new CompleteAddress { CompleteAddress_Id = 7, AddressId = 23, HousingId = 7, Street = "Strada Vasile Lupu 24", Floor = "Parter", Latitude = "46.766510", Longitude = "23.609383" },
+                new CompleteAddress { CompleteAddress_Id = 8, AddressId = 23, HousingId = 8, Street = "Strada Aviator Badescu 34", Floor = "1", Latitude = "46.763605", Longitude = "23.596262" },
+                new CompleteAddress { CompleteAddress_Id = 9, AddressId = 24, HousingId = 9, Street = "Strada Magnoliei 70", Floor = "3", Latitude = "46.794320", Longitude = "23.524650" },
+                new CompleteAddress { CompleteAddress_Id = 10, AddressId = 25, HousingId = 10, Street = "Strada Ioan Borcea 35", Floor = "2", Latitude = "44.201169", Longitude = "28.647306" },
+                new CompleteAddress { CompleteAddress_Id = 11, AddressId = 25, HousingId = 11, Street = "Strada Dorului 57", Floor = "Parter", Latitude = "44.187265", Longitude = "28.627114" },
+                new CompleteAddress { CompleteAddress_Id = 12, AddressId = 25, HousingId = 12, Street = "Strada Dorului 53", Floor = "Parter", Latitude = "44.197265", Longitude = "28.627114" },
+                new CompleteAddress { CompleteAddress_Id = 13, AddressId = 56, HousingId = 13, Street = "Bulevardul Muncii 36", Floor = "3", Latitude = "47.785716", Longitude = "22.860054" },
+                new CompleteAddress { CompleteAddress_Id = 14, AddressId = 60, HousingId = 14, Street = "Strada Hategului 5", Floor = "4", Latitude = "45.785642", Longitude = "24.134520" },
+                new CompleteAddress { CompleteAddress_Id = 15, AddressId = 73, HousingId = 15, Street = "Strada Ion Miron 34", Floor = "1", Latitude = "45.775033", Longitude = "21.228275" },
+                new CompleteAddress { CompleteAddress_Id = 16, AddressId = 73, HousingId = 16, Street = "Strada Paris 2", Floor = "5", Latitude = "45.755140", Longitude = "21.223142" },
+                new CompleteAddress { CompleteAddress_Id = 17, AddressId = 24, HousingId = 17, Street = "Strada Magnoliei 70", Floor = "3", Latitude = "46.794320", Longitude = "23.524650" },
+                new CompleteAddress { CompleteAddress_Id = 18, AddressId = 81, HousingId = 18, Street = "Bulevardul Dinica Golescu 43", Floor = "5", Latitude = "46.794320", Longitude = "23.524650" },
+                new CompleteAddress { CompleteAddress_Id = 19, AddressId = 82, HousingId = 19, Street = "Strada Bodesti 2", Floor = "6", Latitude = "44.438978", Longitude = "26.173939" },
+                new CompleteAddress { CompleteAddress_Id = 20, AddressId = 82, HousingId = 20, Street = "Soseaua Stefan cel Mare 11", Floor = "9", Latitude = "44.452571", Longitude = "26.102739" },
+                new CompleteAddress { CompleteAddress_Id = 21, AddressId = 83, HousingId = 21, Street = "Strada Gura Ialomitei 3", Floor = "3", Latitude = "44.414781", Longitude = "26.183618" },
+                new CompleteAddress { CompleteAddress_Id = 22, AddressId = 83, HousingId = 22, Street = "Strada Zizin 18", Floor = "2", Latitude = "44.416427", Longitude = "26.127926" },
+                new CompleteAddress { CompleteAddress_Id = 23, AddressId = 84, HousingId = 23, Street = "Calea Vacaresti 232", Floor = "Parter", Latitude = "44.411703", Longitude = "26.113875" },
+                new CompleteAddress { CompleteAddress_Id = 24, AddressId = 84, HousingId = 24, Street = "Calea Vacaresti 184", Floor = "1", Latitude = "44.413708", Longitude = "26.114010" },
+                new CompleteAddress { CompleteAddress_Id = 25, AddressId = 85, HousingId = 25, Street = "Strada Botosani 26", Floor = "Parter", Latitude = "44.394717", Longitude = "26.043258" },
+                new CompleteAddress { CompleteAddress_Id = 26, AddressId = 85, HousingId = 26, Street = "Strada Topolinita 59", Floor = "8", Latitude = "44.404615", Longitude = "26.059843" },
+                new CompleteAddress { CompleteAddress_Id = 27, AddressId = 86, HousingId = 27, Street = "Aleea Pupaza cu Mot 22", Floor = "3", Latitude = "44.420257", Longitude = "26.004572" },
+                new CompleteAddress { CompleteAddress_Id = 28, AddressId = 86, HousingId = 28, Street = "Aleea Cetatuia 10", Floor = "3", Latitude = "44.435211", Longitude = "26.036348" },
+                new CompleteAddress { CompleteAddress_Id = 29, AddressId = 87, HousingId = 29, Street = "Strada Veseliei 29", Floor = "Parter", Latitude = "43.377385", Longitude = "26.166757" },
+                new CompleteAddress { CompleteAddress_Id = 30, AddressId = 87, HousingId = 30, Street = "Strada Floare de Cais 13", Floor = "2", Latitude = "44.552820", Longitude = "26.070561" }
+                );
+            #endregion
+
+            #region Housing seed
+            builder.Entity<Housing>()
+               .HasData(
+                new Housing { Housing_Id = 1, Price = 600, NoOfRooms = 1, IsTaken = false },
+                new Housing { Housing_Id = 2, Price = 1000, NoOfRooms = 2, IsTaken = false },
+                new Housing { Housing_Id = 3, Price = 1200, NoOfRooms = 2, IsTaken = false },
+                new Housing { Housing_Id = 4, Price = 2000, NoOfRooms = 4, IsTaken = false },
+                new Housing { Housing_Id = 5, Price = 600, NoOfRooms = 1,  IsTaken = true },
+                new Housing { Housing_Id = 6, Price = 1100, NoOfRooms = 2, IsTaken = false },
+                new Housing { Housing_Id = 7, Price = 1500, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 8, Price = 900, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 9, Price = 1700, NoOfRooms = 3,  IsTaken = false },
+                new Housing { Housing_Id = 10, Price = 1000, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 11, Price = 900, NoOfRooms = 2,  IsTaken = true },
+                new Housing { Housing_Id = 12, Price = 1400, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 13, Price = 700, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 14, Price = 900, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 15, Price = 1250, NoOfRooms = 3,  IsTaken = false },
+                new Housing { Housing_Id = 16, Price = 1200, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 17, Price = 2500, NoOfRooms = 3,  IsTaken = false },
+                new Housing { Housing_Id = 18, Price = 1300, NoOfRooms = 1,  IsTaken = false },
+                new Housing { Housing_Id = 19, Price = 1500, NoOfRooms = 3,  IsTaken = false },
+                new Housing { Housing_Id = 20, Price = 1300, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 21, Price = 800, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 22, Price = 1300, NoOfRooms = 1,  IsTaken = false },
+                new Housing { Housing_Id = 23, Price = 1600, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 24, Price = 1450, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 25, Price = 1800, NoOfRooms = 3,  IsTaken = false },
+                new Housing { Housing_Id = 26, Price = 1000, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 27, Price = 500, NoOfRooms = 1,  IsTaken = false },
+                new Housing { Housing_Id = 28, Price = 1800, NoOfRooms = 2,  IsTaken = false },
+                new Housing { Housing_Id = 29, Price = 1700, NoOfRooms = 3,  IsTaken = false },
+                new Housing { Housing_Id = 30, Price = 3000, NoOfRooms = 4,  IsTaken = false }
+               );
+            #endregion
+
+
+
+
         }
+
+
     }
 
 

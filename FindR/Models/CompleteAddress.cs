@@ -11,16 +11,19 @@ namespace FindR.Models
     {
         [Key, Column("CompleteAddressId")]
         public int CompleteAddress_Id { get; set; }
+        public string Street { get; set; }
+        public string Floor { get; set; }
+        public string Longitude { get; set; }
+        public string Latitude { get; set; }
+
 
         //one - to - many
-        public virtual Address Address { get; set; }
+        public int AddressId { get; set; }
+        public Address Address { get; set; }
 
-        public string Street { get; set; }
-
-        public string Floor { get; set; }
-
-        public int Longitude { get; set; }
-
-        public int Latitude { get; set; }
+            
+        //one - to - one
+        public int HousingId { get; set; }
+        public Housing Housing { get; set; }
     }
 }

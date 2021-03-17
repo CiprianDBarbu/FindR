@@ -23,8 +23,12 @@ namespace FindR.Models
 
         public ZoneType Zone { get; set; }
 
-        //many - to - one
-        public virtual ICollection<CompleteAddress> CompleteAddresses { get; set; }
+        //one - to - many
+        public ICollection<CompleteAddress> CompleteAddresses { get; set; }
+
+
+        //one - to - many
+        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
 
     }
 }

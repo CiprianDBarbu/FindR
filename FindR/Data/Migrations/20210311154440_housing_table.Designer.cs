@@ -4,14 +4,16 @@ using FindR.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FindR.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210311154440_housing_table")]
+    partial class housing_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -786,9 +788,6 @@ namespace FindR.Data.Migrations
                     b.Property<string>("Floor")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("HousingId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Latitude")
                         .HasColumnType("nvarchar(max)");
 
@@ -802,312 +801,7 @@ namespace FindR.Data.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.HasIndex("HousingId")
-                        .IsUnique();
-
                     b.ToTable("CompleteAddresses");
-
-                    b.HasData(
-                        new
-                        {
-                            CompleteAddress_Id = 1,
-                            AddressId = 1,
-                            Floor = "2",
-                            HousingId = 1,
-                            Latitude = "46.066828",
-                            Longitude = "23.554441",
-                            Street = "Strada Gladiolelor 8"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 2,
-                            AddressId = 2,
-                            Floor = "Parter",
-                            HousingId = 2,
-                            Latitude = "46.175409",
-                            Longitude = "21.310149",
-                            Street = "Strada Octaviang Goga 34"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 3,
-                            AddressId = 15,
-                            Floor = "1",
-                            HousingId = 3,
-                            Latitude = "45.640371",
-                            Longitude = "25.624299",
-                            Street = "Strada Zorilor 13"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 4,
-                            AddressId = 15,
-                            Floor = "Parter,1",
-                            HousingId = 4,
-                            Latitude = "45.661322",
-                            Longitude = "25.599990",
-                            Street = "Strada Vulcan 49"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 5,
-                            AddressId = 15,
-                            Floor = "Parter",
-                            HousingId = 5,
-                            Latitude = "45.655480",
-                            Longitude = "25.594241",
-                            Street = "Strada Sitei 84"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 6,
-                            AddressId = 23,
-                            Floor = "4",
-                            HousingId = 6,
-                            Latitude = "46.756804",
-                            Longitude = "23.559443",
-                            Street = "Strada Ion Mester 3"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 7,
-                            AddressId = 23,
-                            Floor = "Parter",
-                            HousingId = 7,
-                            Latitude = "46.766510",
-                            Longitude = "23.609383",
-                            Street = "Strada Vasile Lupu 24"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 8,
-                            AddressId = 23,
-                            Floor = "1",
-                            HousingId = 8,
-                            Latitude = "46.763605",
-                            Longitude = "23.596262",
-                            Street = "Strada Aviator Badescu 34"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 9,
-                            AddressId = 24,
-                            Floor = "3",
-                            HousingId = 9,
-                            Latitude = "46.794320",
-                            Longitude = "23.524650",
-                            Street = "Strada Magnoliei 70"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 10,
-                            AddressId = 25,
-                            Floor = "2",
-                            HousingId = 10,
-                            Latitude = "44.201169",
-                            Longitude = "28.647306",
-                            Street = "Strada Ioan Borcea 35"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 11,
-                            AddressId = 25,
-                            Floor = "Parter",
-                            HousingId = 11,
-                            Latitude = "44.187265",
-                            Longitude = "28.627114",
-                            Street = "Strada Dorului 57"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 12,
-                            AddressId = 25,
-                            Floor = "Parter",
-                            HousingId = 12,
-                            Latitude = "44.197265",
-                            Longitude = "28.627114",
-                            Street = "Strada Dorului 53"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 13,
-                            AddressId = 56,
-                            Floor = "3",
-                            HousingId = 13,
-                            Latitude = "47.785716",
-                            Longitude = "22.860054",
-                            Street = "Bulevardul Muncii 36"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 14,
-                            AddressId = 60,
-                            Floor = "4",
-                            HousingId = 14,
-                            Latitude = "45.785642",
-                            Longitude = "24.134520",
-                            Street = "Strada Hategului 5"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 15,
-                            AddressId = 73,
-                            Floor = "1",
-                            HousingId = 15,
-                            Latitude = "45.775033",
-                            Longitude = "21.228275",
-                            Street = "Strada Ion Miron 34"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 16,
-                            AddressId = 73,
-                            Floor = "5",
-                            HousingId = 16,
-                            Latitude = "45.755140",
-                            Longitude = "21.223142",
-                            Street = "Strada Paris 2"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 17,
-                            AddressId = 24,
-                            Floor = "3",
-                            HousingId = 17,
-                            Latitude = "46.794320",
-                            Longitude = "23.524650",
-                            Street = "Strada Magnoliei 70"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 18,
-                            AddressId = 81,
-                            Floor = "5",
-                            HousingId = 18,
-                            Latitude = "46.794320",
-                            Longitude = "23.524650",
-                            Street = "Bulevardul Dinica Golescu 43"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 19,
-                            AddressId = 82,
-                            Floor = "6",
-                            HousingId = 19,
-                            Latitude = "44.438978",
-                            Longitude = "26.173939",
-                            Street = "Strada Bodesti 2"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 20,
-                            AddressId = 82,
-                            Floor = "9",
-                            HousingId = 20,
-                            Latitude = "44.452571",
-                            Longitude = "26.102739",
-                            Street = "Soseaua Stefan cel Mare 11"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 21,
-                            AddressId = 83,
-                            Floor = "3",
-                            HousingId = 21,
-                            Latitude = "44.414781",
-                            Longitude = "26.183618",
-                            Street = "Strada Gura Ialomitei 3"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 22,
-                            AddressId = 83,
-                            Floor = "2",
-                            HousingId = 22,
-                            Latitude = "44.416427",
-                            Longitude = "26.127926",
-                            Street = "Strada Zizin 18"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 23,
-                            AddressId = 84,
-                            Floor = "Parter",
-                            HousingId = 23,
-                            Latitude = "44.411703",
-                            Longitude = "26.113875",
-                            Street = "Calea Vacaresti 232"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 24,
-                            AddressId = 84,
-                            Floor = "1",
-                            HousingId = 24,
-                            Latitude = "44.413708",
-                            Longitude = "26.114010",
-                            Street = "Calea Vacaresti 184"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 25,
-                            AddressId = 85,
-                            Floor = "Parter",
-                            HousingId = 25,
-                            Latitude = "44.394717",
-                            Longitude = "26.043258",
-                            Street = "Strada Botosani 26"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 26,
-                            AddressId = 85,
-                            Floor = "8",
-                            HousingId = 26,
-                            Latitude = "44.404615",
-                            Longitude = "26.059843",
-                            Street = "Strada Topolinita 59"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 27,
-                            AddressId = 86,
-                            Floor = "3",
-                            HousingId = 27,
-                            Latitude = "44.420257",
-                            Longitude = "26.004572",
-                            Street = "Aleea Pupaza cu Mot 22"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 28,
-                            AddressId = 86,
-                            Floor = "3",
-                            HousingId = 28,
-                            Latitude = "44.435211",
-                            Longitude = "26.036348",
-                            Street = "Aleea Cetatuia 10"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 29,
-                            AddressId = 87,
-                            Floor = "Parter",
-                            HousingId = 29,
-                            Latitude = "43.377385",
-                            Longitude = "26.166757",
-                            Street = "Strada Veseliei 29"
-                        },
-                        new
-                        {
-                            CompleteAddress_Id = 30,
-                            AddressId = 87,
-                            Floor = "2",
-                            HousingId = 30,
-                            Latitude = "44.552820",
-                            Longitude = "26.070561",
-                            Street = "Strada Floare de Cais 13"
-                        });
                 });
 
             modelBuilder.Entity("FindR.Models.Housing", b =>
@@ -1117,6 +811,9 @@ namespace FindR.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("HousingId")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("FullAddressCompleteAddress_Id")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsTaken")
                         .HasColumnType("bit");
@@ -1129,219 +826,9 @@ namespace FindR.Data.Migrations
 
                     b.HasKey("Housing_Id");
 
-                    b.ToTable("Housings");
+                    b.HasIndex("FullAddressCompleteAddress_Id");
 
-                    b.HasData(
-                        new
-                        {
-                            Housing_Id = 1,
-                            IsTaken = false,
-                            NoOfRooms = 1,
-                            Price = 600
-                        },
-                        new
-                        {
-                            Housing_Id = 2,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 1000
-                        },
-                        new
-                        {
-                            Housing_Id = 3,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 1200
-                        },
-                        new
-                        {
-                            Housing_Id = 4,
-                            IsTaken = false,
-                            NoOfRooms = 4,
-                            Price = 2000
-                        },
-                        new
-                        {
-                            Housing_Id = 5,
-                            IsTaken = true,
-                            NoOfRooms = 1,
-                            Price = 600
-                        },
-                        new
-                        {
-                            Housing_Id = 6,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 1100
-                        },
-                        new
-                        {
-                            Housing_Id = 7,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 1500
-                        },
-                        new
-                        {
-                            Housing_Id = 8,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 900
-                        },
-                        new
-                        {
-                            Housing_Id = 9,
-                            IsTaken = false,
-                            NoOfRooms = 3,
-                            Price = 1700
-                        },
-                        new
-                        {
-                            Housing_Id = 10,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 1000
-                        },
-                        new
-                        {
-                            Housing_Id = 11,
-                            IsTaken = true,
-                            NoOfRooms = 2,
-                            Price = 900
-                        },
-                        new
-                        {
-                            Housing_Id = 12,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 1400
-                        },
-                        new
-                        {
-                            Housing_Id = 13,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 700
-                        },
-                        new
-                        {
-                            Housing_Id = 14,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 900
-                        },
-                        new
-                        {
-                            Housing_Id = 15,
-                            IsTaken = false,
-                            NoOfRooms = 3,
-                            Price = 1250
-                        },
-                        new
-                        {
-                            Housing_Id = 16,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 1200
-                        },
-                        new
-                        {
-                            Housing_Id = 17,
-                            IsTaken = false,
-                            NoOfRooms = 3,
-                            Price = 2500
-                        },
-                        new
-                        {
-                            Housing_Id = 18,
-                            IsTaken = false,
-                            NoOfRooms = 1,
-                            Price = 1300
-                        },
-                        new
-                        {
-                            Housing_Id = 19,
-                            IsTaken = false,
-                            NoOfRooms = 3,
-                            Price = 1500
-                        },
-                        new
-                        {
-                            Housing_Id = 20,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 1300
-                        },
-                        new
-                        {
-                            Housing_Id = 21,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 800
-                        },
-                        new
-                        {
-                            Housing_Id = 22,
-                            IsTaken = false,
-                            NoOfRooms = 1,
-                            Price = 1300
-                        },
-                        new
-                        {
-                            Housing_Id = 23,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 1600
-                        },
-                        new
-                        {
-                            Housing_Id = 24,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 1450
-                        },
-                        new
-                        {
-                            Housing_Id = 25,
-                            IsTaken = false,
-                            NoOfRooms = 3,
-                            Price = 1800
-                        },
-                        new
-                        {
-                            Housing_Id = 26,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 1000
-                        },
-                        new
-                        {
-                            Housing_Id = 27,
-                            IsTaken = false,
-                            NoOfRooms = 1,
-                            Price = 500
-                        },
-                        new
-                        {
-                            Housing_Id = 28,
-                            IsTaken = false,
-                            NoOfRooms = 2,
-                            Price = 1800
-                        },
-                        new
-                        {
-                            Housing_Id = 29,
-                            IsTaken = false,
-                            NoOfRooms = 3,
-                            Price = 1700
-                        },
-                        new
-                        {
-                            Housing_Id = 30,
-                            IsTaken = false,
-                            NoOfRooms = 4,
-                            Price = 3000
-                        });
+                    b.ToTable("Housings");
                 });
 
             modelBuilder.Entity("FindR.Models.PersonalAddress", b =>
@@ -1632,15 +1119,16 @@ namespace FindR.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FindR.Models.Housing", "Housing")
-                        .WithOne("FullAddress")
-                        .HasForeignKey("FindR.Models.CompleteAddress", "HousingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Address");
+                });
 
-                    b.Navigation("Housing");
+            modelBuilder.Entity("FindR.Models.Housing", b =>
+                {
+                    b.HasOne("FindR.Models.CompleteAddress", "FullAddress")
+                        .WithMany()
+                        .HasForeignKey("FullAddressCompleteAddress_Id");
+
+                    b.Navigation("FullAddress");
                 });
 
             modelBuilder.Entity("FindR.Models.PersonalAddress", b =>
@@ -1711,11 +1199,6 @@ namespace FindR.Data.Migrations
             modelBuilder.Entity("FindR.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Advertisements");
-                });
-
-            modelBuilder.Entity("FindR.Models.Housing", b =>
-                {
-                    b.Navigation("FullAddress");
                 });
 
             modelBuilder.Entity("FindR.Models.PersonalAddress", b =>
