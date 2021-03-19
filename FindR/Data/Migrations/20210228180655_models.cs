@@ -13,12 +13,7 @@ namespace FindR.Data.Migrations
                 type: "int",
                 nullable: true);
 
-            migrationBuilder.AddColumn<int>(
-                name: "AdressPersonalAddress_Id",
-                table: "AspNetUsers",
-                type: "int",
-                nullable: true);
-
+            
             migrationBuilder.CreateTable(
                 name: "Addresses",
                 columns: table => new
@@ -84,35 +79,13 @@ namespace FindR.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "PersonalAddresses",
-                columns: table => new
-                {
-                    PersonalAddressId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Address_Id = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PersonalAddresses", x => x.PersonalAddressId);
-                    table.ForeignKey(
-                        name: "FK_PersonalAddresses_Addresses_Address_Id",
-                        column: x => x.Address_Id,
-                        principalTable: "Addresses",
-                        principalColumn: "AddressId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
+            
             migrationBuilder.CreateIndex(
                 name: "IX_Housings_FullAddressCompleteAddress_Id",
                 table: "Housings",
                 column: "FullAddressCompleteAddress_Id");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_AdressPersonalAddress_Id",
-                table: "AspNetUsers",
-                column: "AdressPersonalAddress_Id");
-
+            
             migrationBuilder.CreateIndex(
                 name: "IX_Advertisements_Housing_Id",
                 table: "Advertisements",

@@ -1,6 +1,7 @@
 ﻿using FindR.Models;
 using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System;
@@ -208,7 +209,213 @@ namespace FindR.Data
                );
             #endregion
 
+            #region ApplicationUser seed
+            PasswordHasher<ApplicationUser> pH = new PasswordHasher<ApplicationUser>();
 
+            ApplicationUser applicationUser1 = new ApplicationUser
+            {
+                UserName = "Testbot1@yahoo.com",
+                Email = "Testbot1@yahoo.com",
+                NormalizedEmail = "Testbot1@yahoo.com".ToUpper(),
+                NormalizedUserName = "Testbot1@yahoo.com".ToUpper(),
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                FirstName = "Test1",
+                LastName = "Bot1",
+                BirthDate = new DateTime(2000, 1, 1),
+                Age = 20,
+                Gender = GenderType.Male,
+                Details = "Hi, I am Bot1!",
+                AddressId = 1
+            };
+            applicationUser1.PasswordHash = pH.HashPassword(applicationUser1, "Testpass1!");
+
+
+            ApplicationUser applicationUser2 = new ApplicationUser
+            {
+                UserName = "Testbot2@yahoo.com",
+                Email = "Testbot2@yahoo.com",
+                NormalizedEmail = "Testbot2@yahoo.com".ToUpper(),
+                NormalizedUserName = "Testbot2@yahoo.com".ToUpper(),
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                FirstName = "Test2",
+                LastName = "Bot2",
+                BirthDate = new DateTime(2001, 8, 23),
+                Age = 19,
+                Gender = GenderType.Male,
+                Details = "Hi, I am Bot2!",
+                AddressId = 6
+            };
+            applicationUser2.PasswordHash = pH.HashPassword(applicationUser2, "Testpass2!");
+
+
+            ApplicationUser applicationUser3 = new ApplicationUser
+            {
+                UserName = "Testbot3@yahoo.com",
+                Email = "Testbot3@yahoo.com",
+                NormalizedEmail = "Testbot3@yahoo.com".ToUpper(),
+                NormalizedUserName = "Testbot3@yahoo.com".ToUpper(),
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                FirstName = "Test3",
+                LastName = "Bot3",
+                BirthDate = new DateTime(1999, 1, 1),
+                Age = 22,
+                Gender = GenderType.Female,
+                Details = "Hi, I am Bot3!",
+                AddressId = 10
+            };
+            applicationUser3.PasswordHash = pH.HashPassword(applicationUser3, "Testpass3!");
+
+
+            ApplicationUser applicationUser4 = new ApplicationUser
+            {
+                UserName = "Testbot4@yahoo.com",
+                Email = "Testbot4@yahoo.com",
+                NormalizedEmail = "Testbot4@yahoo.com".ToUpper(),
+                NormalizedUserName = "Testbot4@yahoo.com".ToUpper(),
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                FirstName = "Test4",
+                LastName = "Bot4",
+                BirthDate = new DateTime(2000, 1, 24),
+                Age = 21,
+                Gender = GenderType.Male,
+                Details = "Hi, I am Bot4!",
+                AddressId = 35
+            };
+            applicationUser4.PasswordHash = pH.HashPassword(applicationUser4, "Testpass4!");
+
+
+            ApplicationUser applicationUser5 = new ApplicationUser
+            {
+                UserName = "Testbot5@yahoo.com",
+                Email = "Testbot5@yahoo.com",
+                NormalizedEmail = "Testbot5@yahoo.com".ToUpper(),
+                NormalizedUserName = "Testbot5@yahoo.com".ToUpper(),
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                FirstName = "Test5",
+                LastName = "Bot5",
+                BirthDate = new DateTime(1998, 9, 13),
+                Age = 23,
+                Gender = GenderType.Female,
+                Details = "Hi, I am Bot5!",
+                AddressId = 39
+            };
+            applicationUser5.PasswordHash = pH.HashPassword(applicationUser5, "Testpass5!");
+
+
+            ApplicationUser applicationUser6 = new ApplicationUser
+            {
+                UserName = "Testbot6@yahoo.com",
+                Email = "Testbot6@yahoo.com",
+                NormalizedEmail = "Testbot6@yahoo.com".ToUpper(),
+                NormalizedUserName = "Testbot6@yahoo.com".ToUpper(),
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                FirstName = "Test6",
+                LastName = "Bot6",
+                BirthDate = new DateTime(2002, 5, 1),
+                Age = 18,
+                Gender = GenderType.Male,
+                Details = "Hi, I am Bot6!",
+                AddressId = 48
+            };
+            applicationUser6.PasswordHash = pH.HashPassword(applicationUser6, "Testpass6!");
+
+
+            ApplicationUser applicationUser7 = new ApplicationUser
+            {
+                UserName = "Testbot7@yahoo.com",
+                Email = "Testbot7@yahoo.com",
+                NormalizedEmail = "Testbot7@yahoo.com".ToUpper(),
+                NormalizedUserName = "Testbot7@yahoo.com".ToUpper(),
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                FirstName = "Test7",
+                LastName = "Bot7",
+                BirthDate = new DateTime(1999, 12, 23),
+                Age = 22,
+                Gender = GenderType.Female,
+                Details = "Hi, I am Bot7!",
+                AddressId = 52
+            };
+            applicationUser7.PasswordHash = pH.HashPassword(applicationUser7, "Testpass7!");
+
+
+            ApplicationUser applicationUser8 = new ApplicationUser
+            {
+                UserName = "Testbot8@yahoo.com",
+                Email = "Testbot8@yahoo.com",
+                NormalizedEmail = "Testbot8@yahoo.com".ToUpper(),
+                NormalizedUserName = "Testbot8@yahoo.com".ToUpper(),
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                FirstName = "Test8",
+                LastName = "Bot8",
+                BirthDate = new DateTime(2000, 6, 3),
+                Age = 20,
+                Gender = GenderType.Female,
+                Details = "Hi, I am Bot8!",
+                AddressId = 68
+            };
+            applicationUser8.PasswordHash = pH.HashPassword(applicationUser8, "Testpass8!");
+
+
+            ApplicationUser applicationUser9 = new ApplicationUser
+            {
+                UserName = "Testbot9@yahoo.com",
+                Email = "Testbot9@yahoo.com",
+                NormalizedEmail = "Testbot9@yahoo.com".ToUpper(),
+                NormalizedUserName = "Testbot9@yahoo.com".ToUpper(),
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                FirstName = "Test9",
+                LastName = "Bot9",
+                BirthDate = new DateTime(1999, 9, 9),
+                Age = 22,
+                Gender = GenderType.Male,
+                Details = "Hi, I am Bot9!",
+                AddressId = 81
+            };
+            applicationUser9.PasswordHash = pH.HashPassword(applicationUser9, "Testpass9!");
+
+
+            ApplicationUser applicationUser10 = new ApplicationUser
+            {
+                UserName = "Testbot10@yahoo.com",
+                Email = "Testbot10@yahoo.com",
+                NormalizedEmail = "Testbot10@yahoo.com".ToUpper(),
+                NormalizedUserName = "Testbot10@yahoo.com".ToUpper(),
+                TwoFactorEnabled = false,
+                EmailConfirmed = true,
+                FirstName = "Test10",
+                LastName = "Bot10",
+                BirthDate = new DateTime(2000, 10, 10),
+                Age = 20,
+                Gender = GenderType.Female,
+                Details = "Hi, I am Bot10!",
+                AddressId = 84
+            };
+            applicationUser10.PasswordHash = pH.HashPassword(applicationUser10, "Testpass10!");
+
+            builder.Entity<ApplicationUser>()
+                .HasData(
+                applicationUser1,
+                applicationUser2,
+                applicationUser3,
+                applicationUser4,
+                applicationUser5,
+                applicationUser6,
+                applicationUser7,
+                applicationUser8,
+                applicationUser9,
+                applicationUser10
+                );
+
+            #endregion
 
 
         }
